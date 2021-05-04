@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="http://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+  <link href="static/libs/bootstrap.addtabs/bootstrap.addtabs.css" rel="stylesheet">
+  <link href="static/css/theme/default.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <table class="table table-striped table-bordered ">
+        <thead>
+          <tr>
+            <th>教师姓名</th>
+            <th>题目</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(item,index) of searchempfun(searchValue)" :key="index">
+            <td>陆志鹏</td>
+            <td><a href="https://xueshu.baidu.com/usercenter/paper/show?paperid=af77e16482df302f1c515179ca2222c8&site=xueshu_se">基于Bayes推理的灾害演化GERT网络模型研究</a></td>
+          </tr>
+          <tr v-for="(item,index) of searchempfun(searchValue)" :key="index">
+            <td>曹健 </td>
+            <td><a href="https://xueshu.baidu.com/usercenter/paper/show?paperid=af332b01d842cdd062bbf19126fbc6b8">面向云计算的工作流技术</a></td>
+          </tr>
+          <tr v-for="(item,index) of searchempfun(searchValue)" :key="index">
+            <td>柴学智 </td>
+            <td><a href="https://xueshu.baidu.com/usercenter/paper/show?paperid=8c2f8d3a9e3d195b4dc3d6b764cd636c">面向云计算的工作流系统设计与实现</a></td>
+          </tr>
+          <tr v-for="(item,index) of searchempfun(searchValue)" :key="index">
+            <td>童雨霁 </td>
+            <td><a href="https://xueshu.baidu.com/usercenter/paper/show?paperid=7e0b12212a4f600d9e6742a1a2f46c04">面向大数据的工作流引擎设计与实现</a></td>
+          </tr>
+          <tr v-for="(item,index) of searchempfun(searchValue)" :key="index">
+            <td>王寅田  </td>
+            <td><a href="https://xueshu.baidu.com/usercenter/paper/show?paperid=c246c48ebf729be244618853401794d4">基于Hadoop的交通物流大数据处理系统设计与实现</a></td>
+          </tr>
+          <tr v-for="(item,index) of searchempfun(searchValue)" :key="index">
+            <td>陈愉镔</td>
+            <td><a href="https://xueshu.baidu.com/usercenter/paper/show?paperid=fe82ffed1573aa1bbea5b08943eecac0">一个基于工作流引擎的数据迁移系统的设计与实现</a></td>
+          </tr>
+          <tr v-for="(item,index) of searchempfun(searchValue)" :key="index">
+            <td>文震 </td>
+            <td><a href="https://xueshu.baidu.com/usercenter/paper/show?paperid=b30a80e2e18b0dbe3cacda14e0030480">基于J2EE的工作流管理系统的设计与实现</a></td>
+          </tr>
+          <tr v-for="(item,index) of searchempfun(searchValue)" :key="index">
+            <td>李博 </td>
+            <td><a href="https://xueshu.baidu.com/usercenter/paper/show?paperid=315ab04507c45fe4d20ca87810568dd6">基于XPDL的轻量级工作流引擎的设计与实现</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </script>
+    <script src="http://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="static/libs/bootstrap.addtabs/bootstrap.addtabs.js"></script>
+    <script src="static/js/admin.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</body>
+</html>

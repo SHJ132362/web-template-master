@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/iconfont.css" />
+    <link
+      href="http://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="static/libs/bootstrap.addtabs/bootstrap.addtabs.css"
+      rel="stylesheet"
+    />
+    <link href="static/css/theme/default.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>登录界面</title>
+  </head>
+
+  <body>
+    <div id="app">
+      <div id="bigBox" style="height: 400px">
+        <h1>LOGIN</h1>
+        <div class="inputBox">
+          <div class="inputText">
+            <span class="iconfont icon-nickname"></span>
+            <input
+              id="username"
+              type="text"
+              placeholder="Username"
+              onchange="userChange()"
+            />
+          </div>
+          <div class="inputText">
+            <span class="iconfont icon-visible"></span>
+            <input
+              id="password"
+              type="password"
+              placeholder="Password"
+              onchange="passwordChange()"
+            />
+          </div>
+        </div>
+        <div id="db">
+          <input
+            id="loginbutton"
+            class="loginButton"
+            type="button"
+            value="登陆"
+          />
+          <input
+            class="loginButton"
+            data-toggle="modal"
+            data-target="#myModal"
+            type="button"
+            value="注册"
+          />
+        </div>
+      </div>
+      <div
+        class="modal fade"
+        id="myModal"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="myModalLabel"
+      >
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+              <h4 class="modal-title" id="myModalLabel">注册账号信息</h4>
+            </div>
+            <div class="modal-body form-horizontal">
+              <div class="form-group">
+                <label for="newid" class="col-sm-2 control-label">账号</label>
+                <div class="col-sm-10">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="newid"
+                    onchange="newuserChange()"
+                  />
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="newpassword" class="col-sm-2 control-label"
+                  >密码</label
+                >
+                <div class="col-sm-10">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="newpassword"
+                    onchange="newpasswordChange()"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-primary"
+                data-dismiss="modal"
+                id="registebutton"
+              >
+                保存
+              </button>
+              <button
+                type="button"
+                class="btn btn-primary"
+                data-dismiss="modal"
+              >
+                取消
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      userChange = () => {
+        var id = document.getElementById("username");
+        return id.value;
+      };
+      passwordChange = () => {
+        var pass = document.getElementById("password");
+        return pass.value;
+      };
+      newuserChange = () => {
+        var newid = document.getElementById("newid");
+        return newid.value;
+      };
+      newpasswordChange = () => {
+        var newpass = document.getElementById("newpassword");
+        return newpass.value;
+      };
+      var iddata = new Array("wang123", "fang123");
+
+      var password = new Array(123456, 123456);
+      var newiddata = new Array();
+      var newpassword = new Array();
+
+      var Password = document.getElementById("password");
+      var btn1 = document.getElementById("loginbutton");
+      var btn2 = document.getElementById("registebutton");
+      btn2.onclick = function () {
+        const NEWID = newuserChange();
+        console.log(NEWID);
+        newiddata.push(NEWID);
+        const NEWPassword = newpasswordChange();
+        console.log(NEWPassword);
+        newpassword.push(NEWPassword);
+      };
+
+      btn1.onclick = function () {
+        const ID = userChange();
+        console.log(ID);
+        const Password = passwordChange();
+
+        for (var i = 0; i < iddata.length; i++) {
+          if (ID == "" || Password == "") {
+            alert("请输入账号或密码");
+            break;
+          }
+          if (ID == iddata[i] && Password == password[i]) {
+            window.location.href = "./admin-index.html";
+            break;
+          }
+          if (ID == newiddata[i] && Password == newpassword[i]) {
+            window.location.href = "./teacher.index.html";
+            break;
+          } else {
+            alert("账号或密码错误");
+            break;
+          }
+        }
+      };
+    </script>
+    <script src="http://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="static/libs/bootstrap.addtabs/bootstrap.addtabs.js"></script>
+    <script src="static/js/admin.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </body>
+</html>

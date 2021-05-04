@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>学生信息管理</title>
+  <link href="http://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+  <link href="static/libs/bootstrap.addtabs/bootstrap.addtabs.css" rel="stylesheet">
+  <link href="static/css/theme/default.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <div class="container ">
+      <h1>教师信息管理</h1>
+      <div class="panel panel-primary ">
+        <div class="panel-heading">
+          <h3 class="panel-title">教师信息</h3>
+        </div>
+        <div class="panel-body form-inline  ">
+
+          <div class="form-group ">
+            <label for="addT_id">教师工号：</label>
+            <input v-model="addT_id" type="text" class="form-control"
+             id="exampleInputName2" placeholder="教师工号">
+          </div>
+          <div class="form-group">
+            <label for="addName">姓名：</label>
+            <input v-model="addName" type="text" class="form-control"
+             id="exampleInputEmail2" placeholder="教师姓名">
+          </div>
+          <div class="form-group">
+            <label for="addPosition">职称：</label>
+            <input v-model="addPosition" type="text" class="form-control" 
+            id="exampleInputEmail2" placeholder="职称">
+          </div>
+
+          <button type="submit" class="btn btn-primary" @click="addfun">添加</button>
+          <div class="form-group pull-right">
+            <input v-model="searchValue" type="text" class="form-control " 
+            id="searchInput" placeholder="搜索">
+          </div>
+
+          <table class="table table-striped table-bordered ">
+            <thead>
+              <tr>
+                <th>教师工号</th>
+                <th>教师姓名</th>
+                <th>职称</th>
+                <th>创建时间</th>
+                <th>操作</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="(item,index) of searchempfun(searchValue)" :key="index">
+                <td>{{item.T_id}}</td>
+                <td>{{item.Name}}</td>
+                <td>{{item.Position}}</td>
+                <td>{{item.Year}}</td>
+                <td>
+                  <button class="btn btn-warning btn-xs" data-toggle="modal" data-target="#myModal"
+                    @click="updateempfun(index)">修改</button>
+                  <button class="btn btn-warning btn-xs" @click="deletefun(index)">删除</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">修改教师信息</h4>
+          </div>
+          <div class="modal-body form-horizontal">
+
+            <div class="form-group">
+              <label for="updateid" class="col-sm-2 control-label">教师工号</label>
+              <div class="col-sm-10">
+                <input v-model="updateemp.T_id" type="text" class="form-control" id="updateid">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="updatename" class="col-sm-2 control-label">姓名</label>
+              <div class="col-sm-10">
+                <input v-model="updateemp.Name" type="text" class="form-control" id="updatename">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="updateposition" class="col-sm-2 control-label">职称</label>
+              <div class="col-sm-10">
+                <input v-model="updateemp.Position" type="text" class="form-control" id="updateposition">
+              </div>
+            </div>
+
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal">保存修改</button>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <script>
+    new Vue({
+      el: "#app",
+      data: {
+        addT_id: "",
+        addName: "",
+        addPosition: "",
+
+        updateemp: {
+          T_id: "",
+          Name: "",
+          Position: "",
+          Year: ""
+        },
+
+        searchValue: "",
+
+        teacherdata: [
+          {
+            T_id: "1001",
+            Name: "张三",
+            Position: "教授",
+            Year: "1981-2-5"
+
+          },
+          {
+            T_id: "1002",
+            Name: "李四",
+            Position: "副教授",
+            Year: "1995-5-12"
+
+          },
+          {
+            T_id: "1003",
+            Name: "三哥",
+            Position: "讲师",
+            Year: "2013-10-2"
+
+          },
+          {
+            T_id: "1004",
+            Name: "李晓明",
+            Position: "副教授",
+            Year: "1999-3-22"
+
+          },
+          {
+            T_id: "1005",
+            Name: "明道",
+            Position: "讲师",
+            Year: "2018-7-17"
+
+          },
+          {
+            T_id: "1006",
+            Name: "韩明敏",
+            Position: "讲师",
+            Year: "1995-5-12"
+
+          },
+          {
+            T_id: "1007",
+            Name: "方才",
+            Position: "讲师",
+            Year: "1994-4-29"
+
+          }
+
+
+        ]
+
+      },
+      methods: {
+        addfun() {
+
+          var addT_id = this.addT_id;
+          var addName = this.addName;
+          var addPosition = this.addPosition;
+          console.log(addT_id + "" + addName + "" + addPosition);
+          if (addT_id == "" || addName == "" || addPosition == "") {
+            alert("教师信息不能为空！");
+          }
+
+          else {
+            var adddata = {
+              T_id: addT_id,
+              Name: addName,
+              Position: addPosition,
+              Year: new Date().toLocaleDateString()
+            }
+
+
+            this.teacherdata.push(adddata);
+          }
+        },
+        deletefun(deleteIndex) {
+          var tf = confirm("确定删除？");
+          if (tf) {
+            this.teacherdata.splice(deleteIndex, 1);
+          }
+        },
+        updateempfun(updateindex) {
+          this.updateemp = this.teacherdata[updateindex]
+        },
+        searchempfun(sv) {
+          var newteacherdata = [];
+          var teacherdata = this.teacherdata;
+          for (var i = 0; i < teacherdata.length; i++) {
+            if (teacherdata[i].T_id.indexOf(sv) != -1 || teacherdata[i].Name.indexOf(sv) != -1 ||
+              teacherdata[i].Position.indexOf(sv) != -1 || teacherdata[i].Year.indexOf(sv) != -1)
+              {
+              newteacherdata.push(teacherdata[i]);
+          }
+        }
+        return newteacherdata;
+        }
+
+      }
+    });
+  </script>
+  <script src="http://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+  <script src="http://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="static/libs/bootstrap.addtabs/bootstrap.addtabs.js"></script>
+  <script src="static/js/admin.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+</body>
+
+</html>

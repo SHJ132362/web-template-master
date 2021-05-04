@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <title>教师信息管理系统</title>
+    <meta name="keywords" content="管理,后台,模板" />
+    <meta name="description" content="教师信息管理系统" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="http://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="static/libs/bootstrap.addtabs/bootstrap.addtabs.css" rel="stylesheet">
+    <link href="static/css/theme/default.css" rel="stylesheet">
+    <script> 
+    var date = new Date();
+    
+    </script>
+</head>
+
+<body>
+    <div class="admin-header">
+        <div class="container-fluid">
+            <div class="pull-left">
+                <h3>教师信息管理系统</h3>
+            </div>
+            <div class="pull-right">
+                <div class="admin-header-bar">
+                    <a href="javascript:setHomepage()">
+                        <i class="glyphicon glyphicon-home"></i> 设为首页</a>
+                    <i class="vertical-separator"></i>
+                    <a href="javascript:addFavorite(this)">
+                        <i class="glyphicon glyphicon-heart-empty"></i> 收藏</a>
+                    <i class="vertical-separator"></i>
+                    <a href="login.html" onclick="return confirm('您确定要退出系统吗？');"><i
+                            class="glyphicon glyphicon-log-out"></i> 退出</a>
+                    <i class="vertical-separator"></i>
+                    <a href="help.html" target="_blank">
+                        <i class="glyphicon glyphicon-question-sign"></i> 帮助</a>
+                </div>
+                <div class="user">
+                    当前用户：<span class="label label-default">管理员</span>，
+                    登录时间：<span class="label label-default">2021-4-9
+                        16:34:16</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- 侧边菜单 -->
+    <i class="glyphicon glyphicon-play admin-side-toggle"></i>
+    <div class="admin-side">
+        <ul class="nav nav-pills nav-stacked remove-radius">
+            <li class="active">
+                <a href="#">
+                    <i class="glyphicon glyphicon-th-large"></i> 系统菜单
+                    <i class="pull-right glyphicon glyphicon-align-justify" id="sideToggle"></i>
+                </a>
+            </li>
+            <li>
+                <!-- 分组菜单 -->
+                <a href="#" class="list-group-item-info" data-toggle="collapse" data-target="#userAndOrg">
+                    <i class="glyphicon glyphicon-th-large"></i> 信息处理 <span
+                        class="pull-right glyphicon glyphicon-chevron-down"></span>
+                </a>
+                <ul class="list-group collapse in" id="userAndOrg">
+                    <li class="list-group-item"><a href="javascript:void(0);" data-addtab="1" url="./teacher.html">
+                            <i class="glyphicon glyphicon-user"> </i> 教师信息管理</a>
+                    </li>
+                    <li class="list-group-item"><a href="javascript:void(0);" data-addtab="2" url="./teacher2.html"><i
+                                class="glyphicon glyphicon-user"></i> 教师获奖情况</a></li>
+                    <li class="list-group-item"><a href="javascript:void(0);" data-addtab="3" url="./text.html"><i
+                                class="glyphicon glyphicon-book"></i> 教师发表文献</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#" class="list-group-item-info" data-toggle="collapse" data-target="#perm">
+                    <i class="glyphicon glyphicon-info-sign"></i> 班级信息管理 <span
+                        class="pull-right glyphicon glyphicon-chevron-up"></span>
+                </a>
+                <ul class="list-group collapse" id="perm">
+                    <li class="list-group-item"><a href="javascript:void(0);" data-addtab="roles" url="./class.html"><i
+                                class="glyphicon glyphicon-user"></i> 班级信息管理</a></li>
+                    <li class="list-group-item"><a href="javascript:void(0);" data-addtab="menus" url="./lesson.html"><i
+                                class="glyphicon glyphicon-book"></i> 课程信息管理</a></li>
+                    
+                </ul>
+            </li>
+            
+        </ul>
+    </div>
+
+    <div class="admin-body" id="tabs">
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active">
+                <a href="#home" aria-controls="home" role="tab" data-toggle="tab">首页</a>
+            </li>
+        </ul>
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="home">
+            </div>
+        </div>
+    </div>
+    <script src="http://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="static/libs/bootstrap.addtabs/bootstrap.addtabs.js"></script>
+    <script src="static/js/admin.js"></script>
+</body>
+
+</html>

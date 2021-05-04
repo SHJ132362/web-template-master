@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="http://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+	<link href="static/libs/bootstrap.addtabs/bootstrap.addtabs.css" rel="stylesheet">
+	<link href="static/css/theme/default.css" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<title>Document</title>
+
+	<style>
+		.panel-group {
+			max-height: 770px;
+			overflow: auto;
+		}
+
+		.leftMenu {
+			margin: 10px;
+			margin-top: 5px;
+		}
+
+		.leftMenu .panel-heading {
+			font-size: 14px;
+			padding-left: 20px;
+			height: 36px;
+			line-height: 36px;
+			color: white;
+			position: relative;
+			cursor: pointer;
+		}
+
+		/*转成手形图标*/
+		.leftMenu .panel-heading span {
+			position: absolute;
+			right: 10px;
+			top: 12px;
+		}
+
+		.leftMenu .menu-item-left {
+			padding: 2px;
+			background: transparent;
+			border: 1px solid transparent;
+			border-radius: 6px;
+		}
+
+		.leftMenu .menu-item-left:hover {
+			background: #C4E3F3;
+			border: 1px solid #1E90FF;
+		}
+
+		.li_tab {
+			width: 270px;
+		}
+	</style>
+
+</head>
+
+<body>
+
+
+	<div class="row">
+		<div class="col-md-2">
+			<div class="panel-group table-responsive" role="tablist">
+				<div class="panel panel-primary leftMenu">
+					<!-- 利用data-target指定要折叠的分组列表 -->
+					<div class="panel-heading" id="collapseListGroupHeading1" data-toggle="collapse"
+						data-target="#collapseListGroup1" role="tab">
+						<h4 class="panel-title">
+							分组1 <span class="glyphicon glyphicon-chevron-up right"></span>
+						</h4>
+					</div>
+					<!-- .panel-collapse和.collapse标明折叠元素 .in表示要显示出来 -->
+					<div id="collapseListGroup1" class="panel-collapse collapse in" role="tabpanel"
+						aria-labelledby="collapseListGroupHeading1">
+						<ul class="nav nav-pills">
+							<li class="li_tab">
+								<a href="#home" role="tab" data-toggle="tab">分组项1-1</a>
+							</li>
+							<li class="li_tab">
+								<a href="#Java" role="tab" data-toggle="tab">分组项1-2</a>
+							</li>
+							<li class="li_tab">
+								<a href="#JavaScript" role="tab" data-toggle="tab">分组项1-3</a>
+							</li>
+							<li class="li_tab">
+								<a href="#HTML" role="tab" data-toggle="tab">分组项1-4</a>
+							</li>
+							<li class="li_tab">
+								<a href="#home" role="tab" data-toggle="tab">分组项1-5</a>
+							</li>
+							<li class="li_tab">
+								<a href="#Java" role="tab" data-toggle="tab">分组项1-6</a>
+							</li>
+							<li class="li_tab">
+								<a href="#JavaScript" role="tab" data-toggle="tab">分组项1-7</a>
+							</li>
+							<li class="li_tab">
+								<a href="#HTML" role="tab" data-toggle="tab">分组项1-8</a>
+							</li>
+							<li class="li_tab">
+								<a href="#home" role="tab" data-toggle="tab">分组项1-9</a>
+							</li>
+							<li class="li_tab">
+								<a href="#Java" role="tab" data-toggle="tab">分组项1-10</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<!--panel end-->
+				<div class="panel panel-primary leftMenu">
+					<div class="panel-heading" id="collapseListGroupHeading2" data-toggle="collapse"
+						data-target="#collapseListGroup2" role="tab">
+						<h4 class="panel-title">
+							分组2 <span class="glyphicon glyphicon-chevron-down right"></span>
+						</h4>
+					</div>
+					<div id="collapseListGroup2" class="panel-collapse collapse" role="tabpanel"
+						aria-labelledby="collapseListGroupHeading2">
+						<ul class="nav nav-pills">
+							<li class="li_tab">
+								<a href="#home" role="tab" data-toggle="tab">分组项2-1</a>
+							</li>
+							<li class="li_tab">
+								<a href="#Java" role="tab" data-toggle="tab">分组项2-2</a>
+							</li>
+							<li class="li_tab">
+								<a href="#JavaScript" role="tab" data-toggle="tab">分组项2-3</a>
+							</li>
+							<li class="li_tab">
+								<a href="#HTML" role="tab" data-toggle="tab">分组项2-4</a>
+							</li>
+							<li class="li_tab">
+								<a href="#home" role="tab" data-toggle="tab">分组项2-5</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="tab-content">
+			<div role="tabpanel" class="tab-pane active" id="home">Home</div>
+			<div role="tabpanel" class="tab-pane" id="Java">Java</div>
+			<div role="tabpanel" class="tab-pane" id="JavaScript">JavaScript</div>
+			<div role="tabpanel" class="tab-pane" id="JQuery">JQuery</div>
+			<div role="tabpanel" class="tab-pane" id="HTML">HTML</div>
+			<div role="tabpanel" class="tab-pane" id="CSS">CSS</div>
+		</div>
+
+	</div>
+	<div id="app">
+		{{ message }}
+	</div>
+
+	<script>
+		var app = new Vue({
+			el: '#app',
+			data: {
+				message: 'Hello Vue!'
+			}
+		})
+	</script>
+
+
+	<script>
+
+		$(function () {
+			$(".panel-heading").click(function (e) {
+				/*切换折叠指示图标*/
+				$(this).find("span").toggleClass("glyphicon-chevron-down");
+				$(this).find("span").toggleClass("glyphicon-chevron-up");
+			});
+		});
+
+	</script>
+
+
+	<script src="http://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+	<script src="http://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="static/libs/bootstrap.addtabs/bootstrap.addtabs.js"></script>
+	<script src="static/js/admin.js"></script>
+
+</body>
+
+</html>
